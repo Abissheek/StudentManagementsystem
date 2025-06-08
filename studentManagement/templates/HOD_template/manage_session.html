@@ -1,0 +1,49 @@
+{% extends 'HOD_template/base.html' %}
+{% block title %}
+Add Session Year
+{% endblock %}
+{% block content %}
+{% load static %}
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Add Session Year</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <div class="form-group">
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-{{message.tags}}">{{message}}</div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                <form role="form" action="/add_session_save" method="POST">
+                    {% csrf_token %}
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Session Start Year</label>
+                            <input type="date" class="form-control" name="session_start" placeholder="Enter Session Start Year">
+                        </div>
+                        <div class="form-group">
+                            <label>Session End Year</label>
+                            <input type="date" class="form-control" name="session_end" placeholder="Enter Session End Year">
+                        </div>
+                       
+                       
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary btn-block">Add Session</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

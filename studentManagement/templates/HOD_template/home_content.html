@@ -1,0 +1,39 @@
+{% extends 'HOD_template/base.html' %}
+{% block content %}
+{% load static %}
+<section class="content">
+    <div class="container-fluid">
+        <h2>Home</h2>
+    </div>
+    <div class="data">
+         <h3>HOD Users</h3>
+         <ul>
+            {% for user in admin %}
+                <li>{{ user.username }} {{ user.email }} ({{ user.get_user_type_display }})</li>
+            {% empty %}
+                <li>No HOD users found.</li>
+            {% endfor %}
+        </ul>
+
+        <!-- Display Staff Users -->
+        <h3>Staff Users</h3>
+        <ul>
+            {% for user in staff %}
+                <li>{{ user.first_name }} {{ user.last_name }} ({{ user.get_user_type_display }})</li>
+            {% empty %}
+                <li>No staff users found.</li>
+            {% endfor %}
+        </ul>
+
+        <!-- Display Student Users -->
+        <h3>Student Users</h3>
+        <ul>
+            {% for user in student %}
+                <li>{{ user.first_name }} {{ user.last_name }} ({{ user.get_user_type_display }})</li>
+            {% empty %}
+                <li>No student users found.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+{% endblock %}
